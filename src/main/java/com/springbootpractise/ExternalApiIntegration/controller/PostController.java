@@ -2,10 +2,7 @@ package com.springbootpractise.ExternalApiIntegration.controller;
 
 import com.springbootpractise.ExternalApiIntegration.model.Post;
 import com.springbootpractise.ExternalApiIntegration.service.PostService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,11 @@ public class PostController {
 
     public PostController(PostService service) {
         this.service = service;
+    }
+
+    @PostMapping
+    public Post create(@RequestBody Post post) {
+        return service.createPost(post);
     }
 
     @GetMapping
